@@ -16,6 +16,7 @@
     --border: #33332e;
     --accent: #e0b84a;
     --accent-soft: #2e2912;
+    --done: #5cc58a;
   }
   * { box-sizing: border-box; }
   body {
@@ -24,7 +25,7 @@
     color: var(--text);
     font: 17px/1.7 system-ui, -apple-system, "Segoe UI", sans-serif;
   }
-  main { max-width: 760px; margin: 0 auto; padding: 56px 20px 80px; }
+  main { max-width: 780px; margin: 0 auto; padding: 56px 20px 80px; }
   header { margin-bottom: 40px; }
   h1 { margin: 0 0 6px; font-size: 2.6rem; letter-spacing: .02em; color: var(--accent); }
   .tagline { margin: 0; color: var(--muted); font-size: 1.1rem; }
@@ -32,13 +33,42 @@
     display: inline-block; margin-top: 14px; padding: 3px 12px; border-radius: 99px;
     background: var(--accent-soft); color: var(--accent); font-size: .8rem; font-weight: 600;
   }
-  section { margin-bottom: 36px; }
+  section { margin-bottom: 40px; }
   h2 { margin: 0 0 12px; font-size: 1.3rem; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  h3 { margin: 18px 0 4px; font-size: 1.05rem; }
   p { margin: 10px 0; }
-  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 14px; }
+  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); margin-top: 14px; }
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; }
   .card strong { display: block; margin-bottom: 4px; color: var(--accent); }
   .card span { color: var(--muted); font-size: .95rem; }
+  .muted { color: var(--muted); }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin: 4px 0; }
+
+  .rarity { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .rarity span {
+    padding: 3px 12px; border-radius: 99px; font-size: .85rem; font-weight: 600;
+    border: 1px solid var(--border); background: var(--surface);
+  }
+  .r-gray { color: #b3b3ad; } .r-white { color: #f4f4f0; } .r-green { color: #6fcf7f; }
+  .r-blue { color: #5aa9ff; } .r-purple { color: #b98cff; } .r-orange { color: #ffa94d; }
+  .r-silver { color: #d6dde6; border-color: #8b95a1; }
+
+  .roadmap { list-style: none; padding: 0; margin: 18px 0 0; border-left: 2px solid var(--border); }
+  .roadmap li { position: relative; padding: 0 0 22px 26px; margin: 0; }
+  .roadmap li::before {
+    content: ""; position: absolute; left: -8px; top: 6px; width: 14px; height: 14px;
+    border-radius: 50%; background: var(--bg); border: 2px solid var(--border);
+  }
+  .roadmap li.done::before { background: var(--done); border-color: var(--done); }
+  .roadmap li.now::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .roadmap h3 { margin: 0 0 2px; }
+  .roadmap .state { font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+  .done .state { color: var(--done); }
+  .now .state { color: var(--accent); }
+  .next .state { color: var(--muted); }
+  .roadmap p { margin: 2px 0 0; color: var(--muted); font-size: .95rem; }
+
   footer { color: var(--muted); font-size: .85rem; margin-top: 48px; border-top: 1px solid var(--border); padding-top: 16px; }
   @media (max-width: 520px) { h1 { font-size: 2.1rem; } main { padding-top: 36px; } }
 </style>
@@ -54,21 +84,84 @@
   <section>
     <h2>Sobre o jogo</h2>
     <p>Kleos é um RPG online inspirado no jogo "Glory", do anime <em>The King's Avatar</em>. A visão de longo prazo é um MMO, mas a primeira versão será um RPG com multiplayer pequeno, para até 5 jogadores, feito para testar as mecânicas com amigos.</p>
+    <p>O nome vem de uma palavra grega ligada à glória e ao renome conquistados por feitos heroicos.</p>
   </section>
 
   <section>
-    <h2>Ideias centrais</h2>
-    <div class="grid">
-      <div class="card"><strong>Começo sem classe</strong><span>Todo jogador começa sem profissão e escolhe uma classe mais adiante, por meio de uma missão.</span></div>
-      <div class="card"><strong>Classes e subclasses</strong><span>Seis classes, cada uma com quatro subclasses, para experimentar estilos de jogo bem diferentes.</span></div>
-      <div class="card"><strong>Armas prateadas</strong><span>Armas únicas e poderosas, do jogo ou criadas pelos próprios jogadores e avaliadas pela equipe.</span></div>
-      <div class="card"><strong>Bosses e masmorras</strong><span>Bosses globais e masmorras com recordes, desafiando jogadores e guildas.</span></div>
+    <h2>Como vai ser o jogo</h2>
+
+    <h3>Uma jornada de personagem</h3>
+    <p>Você começa sem classe e, mais adiante no caminho, recebe uma missão para escolher a sua. Essa missão é opcional: dá para seguir sem especialização, aceitando um desafio maior. A classe, uma vez escolhida, define o seu estilo de jogo.</p>
+
+    <h3>Classes e subclasses</h3>
+    <p>O jogo terá seis classes, e cada uma terá as suas subclasses, para diferentes jeitos de jogar:</p>
+    <div class="rarity">
+      <span>Mago</span><span>Espadachim</span><span>Sacerdote</span>
+      <span>Atirador</span><span>Lutador</span><span>Andarilho noturno</span>
     </div>
+    <p>A primeira versão começa com três delas, e as demais chegam depois que a base estiver funcionando bem.</p>
+
+    <h3>Masmorras e bosses</h3>
+    <p>Há masmorras para explorar em grupo, com caminhos cheios de criaturas, um boss no fim e, com sorte, surpresas escondidas. Além delas, bosses globais aparecem no mundo e reúnem jogadores e guildas em disputas por recompensas raras. Os recordes e as primeiras vitórias dão destaque a quem os conquista.</p>
+
+    <h3>Guildas</h3>
+    <p>As guildas têm um papel de peso: grupos organizados disputam recordes, enfrentam bosses maiores e crescem juntos.</p>
+
+    <h3>Equipamento</h3>
+    <p>O equipamento tem graus de raridade, do inicial ao mais raro:</p>
+    <div class="rarity">
+      <span class="r-gray">Cinza</span><span class="r-white">Branco</span><span class="r-green">Verde</span>
+      <span class="r-blue">Azul</span><span class="r-purple">Roxo</span><span class="r-orange">Laranja</span>
+      <span class="r-silver">Prateado</span>
+    </div>
+    <p>No topo estão as <strong>armas prateadas</strong>: únicas, poderosas e que evoluem junto com o personagem. Parte delas poderá ser <strong>criada pelos próprios jogadores</strong> e avaliada pela equipe, para entrar no jogo.</p>
   </section>
 
   <section>
     <h2>Como está sendo feito</h2>
-    <p>O mundo é construído em 3D, com visual em 2.5D, usando a engine Unity. A arte definitiva vem por último: por enquanto, o foco é validar a base do jogo.</p>
+    <div class="grid">
+      <div class="card"><strong>Engine</strong><span>Unity</span></div>
+      <div class="card"><strong>Visual</strong><span>Mundo em 3D, com visual em 2.5D</span></div>
+      <div class="card"><strong>Multiplayer</strong><span>Pequeno no início, hospedado por um dos jogadores</span></div>
+      <div class="card"><strong>Arte</strong><span>A arte definitiva vem por último, com criaturas desenhadas à mão</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Roadmap</h2>
+    <p class="muted">Mostra a ordem das etapas, não prazos.</p>
+    <ol class="roadmap">
+      <li class="done">
+        <span class="state">Concluído</span>
+        <h3>Conceito e base do design</h3>
+        <p>Ideia do jogo, nome, engine escolhida e as regras principais de classes, bosses e equipamento definidas no papel.</p>
+      </li>
+      <li class="now">
+        <span class="state">Em andamento</span>
+        <h3>Planejamento e documentação</h3>
+        <p>Refinando o design e organizando o projeto antes de começar a construir.</p>
+      </li>
+      <li class="next">
+        <span class="state">Próximo</span>
+        <h3>Protótipo jogável</h3>
+        <p>Criar o projeto na Unity e montar uma primeira versão simples, com formas e sprites provisórios.</p>
+      </li>
+      <li class="next">
+        <span class="state">Depois</span>
+        <h3>Multiplayer e testes com amigos</h3>
+        <p>Colocar um pequeno grupo para jogar junto e testar as mecânicas principais.</p>
+      </li>
+      <li class="next">
+        <span class="state">Depois</span>
+        <h3>Conteúdo e novas classes</h3>
+        <p>Ampliar masmorras, bosses e classes, conforme os testes mostrarem o que funciona.</p>
+      </li>
+      <li class="next">
+        <span class="state">No futuro</span>
+        <h3>Arte definitiva e expansão</h3>
+        <p>Arte final, novas áreas e um jogo cada vez maior, rumo à visão de um MMO.</p>
+      </li>
+    </ol>
   </section>
 
   <footer>Projeto em fase inicial. O conteúdo pode mudar conforme o desenvolvimento avança.</footer>
