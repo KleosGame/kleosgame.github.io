@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kleos · RPG online em desenvolvimento</title>
+<meta name="description" content="Kleos é um RPG online em fase inicial de desenvolvimento.">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #151513;
+    --surface: #1f1f1c;
+    --text: #ecebe5;
+    --muted: #9b9a92;
+    --border: #33332e;
+    --accent: #e0b84a;
+    --accent-soft: #2e2912;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.7 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 20px 80px; }
+  header { margin-bottom: 40px; }
+  h1 { margin: 0 0 6px; font-size: 2.6rem; letter-spacing: .02em; color: var(--accent); }
+  .tagline { margin: 0; color: var(--muted); font-size: 1.1rem; }
+  .badge {
+    display: inline-block; margin-top: 14px; padding: 3px 12px; border-radius: 99px;
+    background: var(--accent-soft); color: var(--accent); font-size: .8rem; font-weight: 600;
+  }
+  section { margin-bottom: 36px; }
+  h2 { margin: 0 0 12px; font-size: 1.3rem; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  p { margin: 10px 0; }
+  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 14px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; }
+  .card strong { display: block; margin-bottom: 4px; color: var(--accent); }
+  .card span { color: var(--muted); font-size: .95rem; }
+  footer { color: var(--muted); font-size: .85rem; margin-top: 48px; border-top: 1px solid var(--border); padding-top: 16px; }
+  @media (max-width: 520px) { h1 { font-size: 2.1rem; } main { padding-top: 36px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Kleos</h1>
+    <p class="tagline">Um RPG online em desenvolvimento.</p>
+    <span class="badge">Fase inicial</span>
+  </header>
+
+  <section>
+    <h2>Sobre o jogo</h2>
+    <p>Kleos é um RPG online inspirado no jogo "Glory", do anime <em>The King's Avatar</em>. A visão de longo prazo é um MMO, mas a primeira versão será um RPG com multiplayer pequeno, para até 5 jogadores, feito para testar as mecânicas com amigos.</p>
+  </section>
+
+  <section>
+    <h2>Ideias centrais</h2>
+    <div class="grid">
+      <div class="card"><strong>Começo sem classe</strong><span>Todo jogador começa sem profissão e escolhe uma classe mais adiante, por meio de uma missão.</span></div>
+      <div class="card"><strong>Classes e subclasses</strong><span>Seis classes, cada uma com quatro subclasses, para experimentar estilos de jogo bem diferentes.</span></div>
+      <div class="card"><strong>Armas prateadas</strong><span>Armas únicas e poderosas, do jogo ou criadas pelos próprios jogadores e avaliadas pela equipe.</span></div>
+      <div class="card"><strong>Bosses e masmorras</strong><span>Bosses globais e masmorras com recordes, desafiando jogadores e guildas.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Como está sendo feito</h2>
+    <p>O mundo é construído em 3D, com visual em 2.5D, usando a engine Unity. A arte definitiva vem por último: por enquanto, o foco é validar a base do jogo.</p>
+  </section>
+
+  <footer>Projeto em fase inicial. O conteúdo pode mudar conforme o desenvolvimento avança.</footer>
+</main>
+</body>
+</html>
