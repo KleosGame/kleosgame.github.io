@@ -81,7 +81,9 @@
   .roadmap .state { font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
   .done .state { color: var(--done); }
   .now .state { color: var(--accent); }
-  .next .state { color: var(--muted); }
+  .next .state, .more .state { color: var(--muted); }
+  .roadmap li.more::before { border-style: dashed; }
+  .roadmap li.more { border-left: 2px dashed var(--bg); margin-left: -2px; }
   .roadmap p { margin: 2px 0 0; color: var(--muted); font-size: .95rem; }
 
   footer { color: var(--muted); font-size: .85rem; margin-top: 48px; border-top: 1px solid var(--border); padding-top: 16px; }
@@ -205,8 +207,28 @@
       </li>
       <li class="next">
         <span class="state">No futuro</span>
-        <h3>Mundo maior e arte definitiva</h3>
-        <p>Novas regiões e masmorras, bosses globais, guildas, arte final e um jogo cada vez maior, rumo à visão de um MMO.</p>
+        <h3>Mundo aberto</h3>
+        <p>Novas regiões para explorar, cada uma com as suas criaturas, masmorras e segredos, e os primeiros bosses globais, que reúnem jogadores de todo o servidor.</p>
+      </li>
+      <li class="next">
+        <span class="state">No futuro</span>
+        <h3>Guildas e vida online</h3>
+        <p>Guildas, comércio entre jogadores, criação de itens e disputas maiores, com o jogo preparado para receber muito mais gente ao mesmo tempo.</p>
+      </li>
+      <li class="next">
+        <span class="state">No futuro</span>
+        <h3>Arte definitiva e acabamento</h3>
+        <p>A arte final, com criaturas desenhadas à mão, música e efeitos sonoros, novas classes e muitas rodadas de teste e ajuste.</p>
+      </li>
+      <li class="next">
+        <span class="state">No futuro</span>
+        <h3>Lançamento</h3>
+        <p>Uma versão estável, beta aberto e o jogo disponível para o público.</p>
+      </li>
+      <li class="more">
+        <span class="state">E depois</span>
+        <h3>O jogo continua crescendo</h3>
+        <p>Novos conteúdos, expansões e o que os testes mostrarem que o jogo precisa, rumo à visão de um MMO.</p>
       </li>
     </ol>
   </section>
