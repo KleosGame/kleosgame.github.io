@@ -1,0 +1,39 @@
+# Posta no #devlog do Discord que o site foi publicado, com o que mudou no roadmap.
+name: Devlog · site atualizado
+
+on:
+  push:
+    branches: [main]
+    paths: [index.html]
+  workflow_dispatch:
+    inputs:
+      antes:
+        description: Versão do site para comparar (commit ou branch)
+        default: HEAD~1
+      teste:
+        description: Marcar a mensagem como teste
+        type: boolean
+        default: true
+
+jobs:
+  anunciar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Pegar o site de antes
+        env:
+          ANTES: ${{ github.event_name == 'push' && github.event.before || inputs.antes }}
+        run: git show "$ANTES:index.html" > "$RUNNER_TEMP/antes.html" || : > "$RUNNER_TEMP/antes.html"
+
+      - name: Postar no Discord
+        shell: pwsh
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          TESTE: ${{ inputs.teste }}
+        run: |
+          $extra = @{}
+          if ($env:TESTE -eq 'true') { $extra.Teste = $true }
+          ./.github/scripts/devlog-site.ps1 -Antes "$env:RUNNER_TEMP/antes.html" -Depois index.html @extra
