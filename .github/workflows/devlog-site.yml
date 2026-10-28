@@ -26,7 +26,8 @@ jobs:
       - name: Pegar o site de antes
         env:
           ANTES: ${{ github.event_name == 'push' && github.event.before || inputs.antes }}
-        run: git show "$ANTES:index.html" > "$RUNNER_TEMP/antes.html" || : > "$RUNNER_TEMP/antes.html"
+        run: |
+          git show "$ANTES:index.html" > "$RUNNER_TEMP/antes.html" || true
 
       - name: Postar no Discord
         shell: pwsh
