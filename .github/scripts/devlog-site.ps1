@@ -10,7 +10,8 @@ param(
     [Parameter(Mandatory)] [string] $Antes,
     [Parameter(Mandatory)] [string] $Depois,
     [string] $Webhook,
-    [switch] $Teste,      # marca a mensagem como teste
+    [string] $Cargo = '1565123505329012836',  # cargo do Kleos, marcado a cada atualização
+    [switch] $Teste,      # marca a mensagem como teste (e não marca o cargo)
     [switch] $SoMostrar   # só mostra o JSON, não posta
 )
 
@@ -70,7 +71,7 @@ $descricao = if ($linhas.Count -gt 0) {
 }
 
 $prefixo = if ($Teste) { '🧪 [TESTE] ' } else { '' }
-$corpo = @{
+$mensagem = @{
     embeds = @(@{
         title       = $prefixo + '🌐 Site atualizado'
         url         = $site
@@ -79,7 +80,12 @@ $corpo = @{
         footer      = @{ text = 'kleosgame.github.io' }
     })
     allowed_mentions = @{ parse = @() }
-} | ConvertTo-Json -Depth 6
+}
+if ($Cargo -and -not $Teste) {
+    $mensagem.content = "<@&$Cargo>"
+    $mensagem.allowed_mentions.roles = @($Cargo)
+}
+$corpo = $mensagem | ConvertTo-Json -Depth 6
 
 if ($SoMostrar) { Write-Host $corpo; exit 0 }
 if (-not $Webhook) { $Webhook = $env:DISCORD_WEBHOOK }
