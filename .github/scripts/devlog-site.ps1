@@ -10,7 +10,7 @@ param(
     [Parameter(Mandatory)] [string] $Antes,
     [Parameter(Mandatory)] [string] $Depois,
     [string] $Webhook,
-    [string] $Cargo = '1565123505329012836',  # cargo do Kleos, marcado a cada atualização
+    [string] $Cargo = '1565503934498603078',  # cargo do Kleos, marcado a cada atualização
     [switch] $Teste,      # marca a mensagem como teste (e não marca o cargo)
     [switch] $SoMostrar   # só mostra o JSON, não posta
 )
